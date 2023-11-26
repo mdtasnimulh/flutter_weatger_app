@@ -29,15 +29,15 @@ class Current {
     dt = json['dt'];
     sunrise = json['sunrise'];
     sunset = json['sunset'];
-    temp = json['temp'];
+    temp = (json['temp'] as num?)?.round();
     feelsLike = json['feels_like'];
     pressure = json['pressure'];
-    humidity = json['humidity'];
+    humidity = json['humidity'] as int?;
     dewPoint = json['dew_point'];
     uvi = json['uvi'];
-    clouds = json['clouds'];
+    clouds = json['clouds'] as int?;
     visibility = json['visibility'];
-    windSpeed = json['wind_speed'];
+    windSpeed = (json['wind_speed'] as num?)?.toDouble();
     windDeg = json['wind_deg'];
     windGust = json['wind_gust'];
     if (json['weather'] != null) {
@@ -50,30 +50,30 @@ class Current {
   num? dt;
   num? sunrise;
   num? sunset;
-  num? temp;
+  int? temp;
   num? feelsLike;
   num? pressure;
-  num? humidity;
+  int? humidity;
   num? dewPoint;
   num? uvi;
-  num? clouds;
+  int? clouds;
   num? visibility;
-  num? windSpeed;
+  double? windSpeed;
   num? windDeg;
   num? windGust;
   List<Weather>? weather;
   Current copyWith({  num? dt,
     num? sunrise,
     num? sunset,
-    num? temp,
+    int? temp,
     num? feelsLike,
     num? pressure,
-    num? humidity,
+    int? humidity,
     num? dewPoint,
     num? uvi,
-    num? clouds,
+    int? clouds,
     num? visibility,
-    num? windSpeed,
+    double? windSpeed,
     num? windDeg,
     num? windGust,
     List<Weather>? weather,
