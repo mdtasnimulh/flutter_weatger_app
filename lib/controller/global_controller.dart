@@ -1,5 +1,8 @@
+import 'package:flutter_weatger_app/api/fetch_weather.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+
+import '../model/weather_data.dart';
 
 class GlobalController extends GetxController{
   //create various variable
@@ -11,6 +14,11 @@ class GlobalController extends GetxController{
   RxBool checkLoading() => _isLoading;
   RxDouble getLatitude() => _latitude;
   RxDouble getLongitude() => _longitude;
+
+  final weatherData = WeatherData().obs;
+  WeatherData getWeatherData(){
+    return weatherData.value;
+  }
 
   @override
   void onInit() {
@@ -50,7 +58,14 @@ class GlobalController extends GetxController{
       // update our latitude and longitude
       _latitude.value = value.latitude;
       _longitude.value = value.longitude;
-      _isLoading.value = false;
+      print("${value.latitude},  ${value.longitude}");
+      //calling weather api
+      return FetchWeatherAPI()
+          .proessData(value.latitude, value.longitude)
+          .then((value) {
+            weatherData.value = value;
+            _isLoading.value = false;
+      });
     });
   }
 }
