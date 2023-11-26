@@ -30,11 +30,11 @@ class Current {
     sunrise = json['sunrise'];
     sunset = json['sunset'];
     temp = (json['temp'] as num?)?.round();
-    feelsLike = json['feels_like'];
+    feelsLike = (json['feels_like'] as num?)?.toDouble();
     pressure = json['pressure'];
     humidity = json['humidity'] as int?;
     dewPoint = json['dew_point'];
-    uvi = json['uvi'];
+    uvi = (json['uvi'] as num?)?.toDouble();
     clouds = json['clouds'] as int?;
     visibility = json['visibility'];
     windSpeed = (json['wind_speed'] as num?)?.toDouble();
@@ -51,11 +51,11 @@ class Current {
   num? sunrise;
   num? sunset;
   int? temp;
-  num? feelsLike;
+  double? feelsLike;
   num? pressure;
   int? humidity;
   num? dewPoint;
-  num? uvi;
+  double? uvi;
   int? clouds;
   num? visibility;
   double? windSpeed;
@@ -66,11 +66,11 @@ class Current {
     num? sunrise,
     num? sunset,
     int? temp,
-    num? feelsLike,
+    double? feelsLike,
     num? pressure,
     int? humidity,
     num? dewPoint,
-    num? uvi,
+    double? uvi,
     int? clouds,
     num? visibility,
     double? windSpeed,
