@@ -49,9 +49,6 @@ class GlobalController extends GetxController{
     }else if(locationPermission == LocationPermission.denied){
       // request permission
       locationPermission = await Geolocator.requestPermission();
-      if (locationPermission == LocationPermission.denied){
-        return Future.error("Location Service is denied`.");
-      }
     }
 
     //getting the current position
